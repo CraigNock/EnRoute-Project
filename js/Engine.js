@@ -14,7 +14,7 @@ class Engine {
         // Initially, we have no enemies in the game. The enemies property refers to an array
         // that contains instances of the Enemy class
         this.enemies = [];
-        // We add the background image to the game
+        
         // addBackground(this.root); // REMOVED, UNNEEDED
         
     }
@@ -48,8 +48,7 @@ class Engine {
             const spot = nextEnemySpot(this.enemies);
             this.enemies.push(new Enemy(this.root, spot));
         }
-        // We check if the player is dead. If he is, we alert the user
-        // and return from the method (Why is the return statement important?)
+        //CHECKS IF PLAYER IS DEAD
         if (this.isPlayerDead()) {
             window.alert("Game over");
             return;
@@ -57,18 +56,16 @@ class Engine {
         // console.log(this.enemies);
         // console.log(this.player);
 
-        // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
         setTimeout(this.gameLoop, 20);
     }
-    // This method is not implemented correctly, which is why
-    // the burger never dies. In your exercises you will fix this method.
+
     isPlayerDead = () => {
         let dead = false;
-        this.enemies.forEach(enemy => {
-            if((enemy.y + (ENEMY_HEIGHT-10) >= this.player.y) && this.player.x === enemy.x){
-                console.log('dddd');
-                dead = true;
-            }});
+        // this.enemies.forEach(enemy => {
+        //     if((enemy.y + (ENEMY_HEIGHT-10) >= this.player.y) && this.player.x === enemy.x){
+        //         console.log('ded');
+        //         dead = true;
+        //     }});
         return dead;
     };
 }

@@ -7,10 +7,12 @@ app.style.overflow = 'hidden';
 app.style.position = 'relative';
 app.style.height = `${GAME_HEIGHT}px`;
 app.style.width = `${GAME_WIDTH}px`;
-app.style.backgroundImage = 'url("./images/stars.png")';
-app.style.backgroundFit = 'cover';
+app.style.backgroundImage = 'url("./images/wood.jpg")';
+app.style.backgroundSize = 'cover';
+// app.style.margin = '0'
 
-const gameEngine = new Engine(document.getElementById("app"));
+
+const gameEngine = new Engine(app);
 // keydownHandler is a variable that refers to a function. The function has one parameter
 // (does the parameter name matter?) which is called event. As we will see below, this function
 // will be called every time the user presses a key. The argument of the function call will be an object.
