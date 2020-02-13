@@ -1,5 +1,15 @@
 // We create an instance of the Engine class. Looking at our index.html,
-// we see that it has a div with an id of \`"app"\`  
+// we see that it has a div with an id of \`"app"\` 
+
+//Styling 'app' div to act as game "board" , removes need for background function
+const app = document.getElementById("app");
+app.style.overflow = 'hidden';
+app.style.position = 'relative';
+app.style.height = `${GAME_HEIGHT}px`;
+app.style.width = `${GAME_WIDTH}px`;
+app.style.backgroundImage = 'url("./images/stars.png")';
+app.style.backgroundFit = 'cover';
+
 const gameEngine = new Engine(document.getElementById("app"));
 // keydownHandler is a variable that refers to a function. The function has one parameter
 // (does the parameter name matter?) which is called event. As we will see below, this function
