@@ -19,7 +19,7 @@ class Player {
         // super(root);
         this.x = 2 * PLAYER_WIDTH;
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
-        
+        this.lives = 3;
         this.domElement = document.createElement("img");
         this.domElement.src = 'images/player.png';
         this.domElement.style.position = 'absolute';

@@ -50,7 +50,8 @@ class Engine {
         }
         //CHECKS IF PLAYER IS DEAD
         if (this.isPlayerDead()) {
-            window.alert("Game over");
+            result.style.display = 'flex';
+            resButton.addEventListener('click', restartHandle);
             return;
         }
         // console.log(this.enemies);
@@ -59,13 +60,23 @@ class Engine {
         setTimeout(this.gameLoop, 20);
     }
 
+
     isPlayerDead = () => {
         let dead = false;
-        // this.enemies.forEach(enemy => {
-        //     if((enemy.y + (ENEMY_HEIGHT-10) >= this.player.y) && this.player.x === enemy.x){
-        //         console.log('ded');
-        //         dead = true;
-        //     }});
+        this.enemies.forEach(enemy => {
+            if((enemy.y + (ENEMY_HEIGHT-10) >= this.player.y) && this.player.x === enemy.x){
+                if(this.player.lives === 0) {
+                    console.log('ded');
+                    console.log(this.player.lives);
+                    dead = true;
+                } else {
+                    console.log('sub');
+                    // this.player.lives --;
+                }
+            }
+        });
         return dead;
     };
 }
+
+
