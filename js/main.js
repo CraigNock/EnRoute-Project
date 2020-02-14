@@ -25,51 +25,72 @@ music.controls = true;
 music.src = 'sounds/gasgasgas.mp3';
 document.querySelector('.border-left').appendChild(music);
 
+let gameEngine = undefined;
+
+let paused = false;
+
+let timeElapsed = 0;
+let clock = undefined;
+timePasser = () =>{
+    console.log('time activated');
+    clock = setInterval( passer = () => {
+    timeElapsed ++;}
+    , 1)
+};
+
+
 startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
     //resets timer
+    clearInterval(clock);
     timeElapsed = 0;
-    let paused = false;
+    // paused = false;
     timePasser();
     //removes dead condition
     deaders = false;
-    const gameEngine = new Engine(zone);
+    gameEngine = new Engine(zone);
     // music.autoplay = true;
-    const keydownHandler = event => {
-        if (deaders){
-        }
-        else if (event.code === "ArrowLeft") {
-            gameEngine.player.moveLeft();
-        }
-        else if (event.code === "ArrowRight") {
-            gameEngine.player.moveRight();
-        }
-        //music toggle
-        if (event.code === "KeyM") {
-            
-            if(music.paused) {
-            music.play();
-            } else {
-                music.pause();
-            }
-        } 
-        if (event.code === "KeyP") {
-            if(paused === false) {
-                clearInterval(clock);
-                paused = true;
-            } else {
-                paused = false;
-                timePasser();
-            }
-            
-        }
-    }
-
-    document.addEventListener("keydown", keydownHandler);
-
+    
     // We call the gameLoop method to start the game
     gameEngine.gameLoop();
 }
 
+const keydownHandler = event => {
+    if (deaders || paused){
+    }
+    else if (event.code === "ArrowLeft") {
+        gameEngine.player.moveLeft();
+    }
+    else if (event.code === "ArrowRight") {
+        gameEngine.player.moveRight();
+    }
+    //music toggle
+    if (event.code === "KeyM") {
+        if(music.paused) {
+        music.play();
+        } else {
+            music.pause();
+        }
+    } 
+    if (event.code === "KeyP") {
+        if (deaders){
+
+        } else if(paused === true) {
+            timePasser();
+            console.log(paused);
+            paused = false;
+            console.log(paused);
+            gameEngine.gameLoop();
+            console.log('unpause');
+        } else {
+            clearInterval(clock);
+            paused = true;
+            console.log('pause');
+        }
+        
+    }
+}
+
+document.addEventListener("keydown", keydownHandler);
 startTheGame();

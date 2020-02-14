@@ -2,17 +2,6 @@
 // of the game relating to the interactions between the player and the
 // enemy and also relating to how our enemies are created and evolve over time
 
-
-let timeElapsed = 0;
-let clock = undefined;
-timePasser = () =>{
-    clock = setInterval( passer = () => {
-    timeElapsed ++;}
-    , 1)
-};
-
-
-
 class Engine {
     // The constructor has one parameter. It will refer to the DOM node that we will be adding everything to.
     // You need to provide the DOM node when you create an instance of the class
@@ -28,6 +17,7 @@ class Engine {
     //  - Detects a collision between the player and any enemy
     //  - Removes enemies that are too low from the enemies array
     gameLoop = () => {
+        if (paused) {return};
         if (this.lastFrame === undefined) this.lastFrame = timeElapsed;
         let timeDiff = timeElapsed - this.lastFrame;
         this.lastFrame = timeElapsed;
@@ -53,10 +43,12 @@ class Engine {
         if (this.isPlayerDead()) {
             if(this.player.lives !== 0) {
                 this.player.lives --;
-                console.log(this.player.lives);
+                // console.log(this.player.lives);
             } else {
-                clearInterval(clock);
+                // clearInterval(clock);
+                console.log('dead');
                 deaders = true;
+                // paused = false;
                 result.style.display = 'flex';
                 resButton.addEventListener('click', restartHandle);
                 return;
@@ -76,7 +68,7 @@ class Engine {
                     // console.log(this.player.lives);
                     dead = true;
                 // } else {
-                    console.log('sub');
+                    // console.log('sub');
                     // this.player.lives --;
                 }
             // }
