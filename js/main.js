@@ -28,6 +28,11 @@ document.querySelector('.border-left').appendChild(music);
 startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
+    //resets timer
+    timeElapsed = 0;
+    let paused = false;
+    timePasser();
+    //removes dead condition
     deaders = false;
     const gameEngine = new Engine(zone);
     // music.autoplay = true;
@@ -44,13 +49,21 @@ startTheGame = () => {
         if (event.code === "KeyM") {
             
             if(music.paused) {
-            console.log('play');
             music.play();
             } else {
                 music.pause();
-                console.log('pause');
             }
-        }   
+        } 
+        if (event.code === "KeyP") {
+            if(paused === false) {
+                clearInterval(clock);
+                paused = true;
+            } else {
+                paused = false;
+                timePasser();
+            }
+            
+        }
     }
 
     document.addEventListener("keydown", keydownHandler);

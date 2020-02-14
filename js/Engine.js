@@ -1,6 +1,18 @@
 // The engine class will only be instantiated once. It contains all the logic
 // of the game relating to the interactions between the player and the
 // enemy and also relating to how our enemies are created and evolve over time
+
+
+let timeElapsed = 0;
+let clock = undefined;
+timePasser = () =>{
+    clock = setInterval( passer = () => {
+    timeElapsed ++;}
+    , 1)
+};
+
+
+
 class Engine {
     // The constructor has one parameter. It will refer to the DOM node that we will be adding everything to.
     // You need to provide the DOM node when you create an instance of the class
@@ -8,27 +20,17 @@ class Engine {
         this.root = theRoot;
         // We create our player.
         this.player = new Player(this.root);
-        // Initially, we have no enemies in the game. The enemies property refers to an array
-        // that contains instances of the Enemy class
+
         this.enemies = [];
-        
-        // addBackground(this.root); // REMOVED, UNNEEDED
-        
     }
-
-
-    
-    // The gameLoop will run every few milliseconds. It does several things
+    // The gameLoop runs every few milliseconds.
     //  - Updates the enemy positions
     //  - Detects a collision between the player and any enemy
     //  - Removes enemies that are too low from the enemies array
     gameLoop = () => {
-        // This code is to see how much time, in milliseconds, has elapsed since the last
-        // time this method was called.
-        // (new Date).getTime() evaluates to the number of milliseconds since January 1st, 1970 at midnight.
-        if (this.lastFrame === undefined) this.lastFrame = (new Date).getTime();
-        let timeDiff = (new Date).getTime() - this.lastFrame;
-        this.lastFrame = (new Date).getTime();
+        if (this.lastFrame === undefined) this.lastFrame = timeElapsed;
+        let timeDiff = timeElapsed - this.lastFrame;
+        this.lastFrame = timeElapsed;
         // We use the number of milliseconds since the last call to gameLoop to update the enemy positions.
         // Furthermore, if any enemy is below the bottom of our game, its destroyed property will be set. (See Enemy.js)
         this.enemies.forEach(enemy => {
@@ -53,15 +55,13 @@ class Engine {
                 this.player.lives --;
                 console.log(this.player.lives);
             } else {
+                clearInterval(clock);
                 deaders = true;
                 result.style.display = 'flex';
                 resButton.addEventListener('click', restartHandle);
                 return;
             }
-            // return;
         }
-        // console.log(this.enemies);
-        // console.log(this.player);
 
         setTimeout(this.gameLoop, 20);
     }
@@ -83,6 +83,5 @@ class Engine {
         });
         return dead;
     };
-}
-
-
+    
+}   

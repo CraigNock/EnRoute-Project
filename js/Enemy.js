@@ -21,7 +21,7 @@ class Enemy {
 
         this.destroyed = false;
         
-        this.speed = Math.random() / 2 + 0.25;
+        this.speed = Math.random() / .5 + 0.5;
  
         this.domElement = document.createElement('img');
         
