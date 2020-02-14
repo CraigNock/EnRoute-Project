@@ -7,7 +7,7 @@ app.style.overflow = 'hidden';
 app.style.position = 'relative';
 app.style.height = `${GAME_HEIGHT}px`;
 app.style.width = `${GAME_WIDTH}px`;
-app.style.backgroundImage = 'url("./images/wood.jpg")';
+app.style.backgroundImage = 'url("./images/asphalt.png")';
 app.style.backgroundSize = 'cover';
 
 //active game zone, so finished game elements can be cleared easily
@@ -20,20 +20,39 @@ zone.style.backgroundColor = 'transparent';
 app.appendChild(zone);
 
 
+const music = document.createElement('AUDIO');
+music.controls = true;
+music.src = 'sounds/gasgasgas.mp3';
+document.querySelector('.border-left').appendChild(music);
+
 startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
-
+    deaders = false;
     const gameEngine = new Engine(zone);
-
+    // music.autoplay = true;
     const keydownHandler = event => {
-        if (event.code === "ArrowLeft") {
+        if (deaders){
+        }
+        else if (event.code === "ArrowLeft") {
             gameEngine.player.moveLeft();
         }
-        if (event.code === "ArrowRight") {
+        else if (event.code === "ArrowRight") {
             gameEngine.player.moveRight();
         }
+        //music toggle
+        if (event.code === "KeyM") {
+            
+            if(music.paused) {
+            console.log('play');
+            music.play();
+            } else {
+                music.pause();
+                console.log('pause');
+            }
+        }   
     }
+
     document.addEventListener("keydown", keydownHandler);
 
     // We call the gameLoop method to start the game

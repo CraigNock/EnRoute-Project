@@ -13,7 +13,7 @@ result.style.width = '15vw';
 result.style.height = '10vw';
 result.style.border = '5px solid white';
 result.style.borderRadius = '5px';
-result.innerText = 'You Have Perished';
+result.innerText = 'Game Over';
 result.style.fontWeight = '900';
 body.appendChild(result);
 

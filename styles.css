@@ -1,0 +1,23 @@
+.border-left {
+    background-image: url('images/grass_tile.png');
+    flex:1;
+    /* width: 100px; */
+    border-right: 15px solid grey;
+    display: flex;
+    align-items: center;
+}
+
+.border-right {
+    position: relative;
+    flex:1;
+    background-image: url('images/Ocean_SpriteSheet.png');
+    /* width: 200px; */
+    border-left: 15px solid grey;
+    z-index: -10;
+}
+
+.line {
+    width: 3px;
+    height: 50px;
+    background-color: whitesmoke;
+}

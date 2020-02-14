@@ -21,8 +21,11 @@ class Player {
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
         this.lives = 3;
         this.domElement = document.createElement("img");
-        this.domElement.src = 'images/player.png';
+        this.domElement.src = 'images/car.png';
         this.domElement.style.position = 'absolute';
+        this.domElement.style.height = PLAYER_HEIGHT;
+        this.domElement.style.width = PLAYER_WIDTH;
+
         this.domElement.style.left = `${this.x}px`;
         this.domElement.style.top = `${this.y}px`;
         this.domElement.style.zIndex = '10';

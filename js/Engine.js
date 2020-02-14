@@ -5,11 +5,8 @@ class Engine {
     // The constructor has one parameter. It will refer to the DOM node that we will be adding everything to.
     // You need to provide the DOM node when you create an instance of the class
     constructor(theRoot) {
-        // We need the DOM element every time we create a new enemy so we
-        // store a reference to it in a property of the instance.
         this.root = theRoot;
-        // We create our hamburger.
-        // Please refer to Player.js for more information about what happens when you create a player
+        // We create our player.
         this.player = new Player(this.root);
         // Initially, we have no enemies in the game. The enemies property refers to an array
         // that contains instances of the Enemy class
@@ -19,6 +16,8 @@ class Engine {
         
     }
 
+
+    
     // The gameLoop will run every few milliseconds. It does several things
     //  - Updates the enemy positions
     //  - Detects a collision between the player and any enemy
@@ -50,9 +49,16 @@ class Engine {
         }
         //CHECKS IF PLAYER IS DEAD
         if (this.isPlayerDead()) {
-            result.style.display = 'flex';
-            resButton.addEventListener('click', restartHandle);
-            return;
+            if(this.player.lives !== 0) {
+                this.player.lives --;
+                console.log(this.player.lives);
+            } else {
+                deaders = true;
+                result.style.display = 'flex';
+                resButton.addEventListener('click', restartHandle);
+                return;
+            }
+            // return;
         }
         // console.log(this.enemies);
         // console.log(this.player);
@@ -64,16 +70,16 @@ class Engine {
     isPlayerDead = () => {
         let dead = false;
         this.enemies.forEach(enemy => {
-            if((enemy.y + (ENEMY_HEIGHT-10) >= this.player.y) && this.player.x === enemy.x){
-                if(this.player.lives === 0) {
-                    console.log('ded');
-                    console.log(this.player.lives);
+            if(((enemy.y + (ENEMY_HEIGHT-1)) >= this.player.y) && this.player.x === enemy.x){
+                // if(this.player.lives === 0) {
+                    // console.log('ded');
+                    // console.log(this.player.lives);
                     dead = true;
-                } else {
+                // } else {
                     console.log('sub');
                     // this.player.lives --;
                 }
-            }
+            // }
         });
         return dead;
     };
