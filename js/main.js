@@ -1,5 +1,3 @@
-// We create an instance of the Engine class. Looking at our index.html,
-// we see that it has a div with an id of \`"app"\` 
 
 //Styling 'app' div to act as game "board" , removes need for background function
 const app = document.getElementById("app");
@@ -19,43 +17,23 @@ zone.style.width = `${GAME_WIDTH}px`;
 zone.style.backgroundColor = 'transparent';
 app.appendChild(zone);
 
-
-const music = document.createElement('AUDIO');
-music.controls = true;
-music.src = 'sounds/gasgasgas.mp3';
-document.querySelector('.border-left').appendChild(music);
-
-let gameEngine = undefined;
-
-let paused = false;
-
-let timeElapsed = 0;
-let clock = undefined;
-timePasser = () =>{
-    console.log('time activated');
-    clock = setInterval( passer = () => {
-    timeElapsed ++;}
-    , 1)
-};
-
-
+//START GAME FUNCTION
 startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
     //resets timer
     clearInterval(clock);
     timeElapsed = 0;
-    // paused = false;
     timePasser();
     //removes dead condition
     deaders = false;
     gameEngine = new Engine(zone);
-    // music.autoplay = true;
-    
     // We call the gameLoop method to start the game
     gameEngine.gameLoop();
+    // deployLines(); //////issue
 }
 
+//KEY HANDLER
 const keydownHandler = event => {
     if (deaders || paused){
     }

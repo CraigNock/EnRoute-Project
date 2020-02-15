@@ -1,9 +1,10 @@
-// The Enemy class will contain information about the enemy such as
+
 function randy(min, max){ 
             let rand = Math.floor((Math.random()*(max - min)) + min);
             return rand;
-        };// its position on screen. It will also provide methods for updating
-// and destroying the enemy.
+        };
+
+// enemy position on screen. It will also provide methods for updating and destroying the enemy.
 class Enemy {
     constructor(theRoot, enemySpot) {
         
@@ -20,7 +21,7 @@ class Enemy {
         
         let imageNum = randy(1,17);
         this.domElement.src = `./images/cars/${imageNum}.png`;
-
+        ///possibly consolidate in a parent method?
         this.domElement.style.position = 'absolute';
         this.domElement.style.left = `${this.x}px`;
         this.domElement.style.top = `${this.y}px`;

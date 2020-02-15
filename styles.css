@@ -1,11 +1,10 @@
 .border-left {
     background-image: url('images/grass_tile.png');
-    flex:1;
-    /* width: 100px; */
+    flex: 1;
+    height: 600px;
     border-right: 15px solid grey;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     color: whitesmoke;
 }
@@ -18,18 +17,43 @@ p {
 }
 .border-right {
     position: relative;
-    flex:1;
+    flex: 1;
+    height: 600px;
     background-image: url('images/watergif.gif');
     background-size: cover;
     overflow: hidden;
     opacity: 50%;
-    /* width: 200px; */
     border-left: 15px solid grey;
-    z-index: -10;
 }
 
 .line {
+    position: absolute;
     width: 3px;
     height: 50px;
     background-color: whitesmoke;
+    z-index: 20;
+}
+
+.result-box{
+    position : absolute;
+    display : none;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    top : 10vh;
+    z-index : 50;
+    background-image : url('images/bluecheck.gif');
+    width : 15vw;
+    height : 10vw;
+    border : 5px solid white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgb(255, 166, 0);
+    border-radius : 5px;
+}
+
+.res-button {
+    margin: 1rem 0 0 0;
+    color: whitesmoke;
+    background-color: rgb(32, 32, 32);
 }
