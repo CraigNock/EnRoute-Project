@@ -16,6 +16,7 @@ const nextEnemySpot = enemies => {
 //MUSIC ADDITION
 const music = document.createElement('AUDIO');
 music.controls = true;
+music.volume = 0.5;
 music.src = 'sounds/gasgasgas.mp3';
 document.querySelector('.border-left').appendChild(music);
 
@@ -32,19 +33,6 @@ timePasser = () =>{
 const result = document.createElement('div');
 result.id = 'result';
 result.className = 'result-box';
-// result.style.position = 'absolute';
-// result.style.display = 'none';
-// result.style.flexDirection = 'column';
-// result.style.justifyContent = 'center';
-// result.style.alignItems = 'center';
-// result.style.top = '10vh';
-// result.style.zIndex = '50';
-// result.style.backgroundColor = 'grey';
-// result.style.width = '15vw';
-// result.style.height = '10vw';
-// result.style.border = '5px solid white';
-// result.style.borderRadius = '5px';
-// result.style.fontWeight = '900';
 result.innerText = 'Game Over';
 body.appendChild(result);
 

@@ -9,47 +9,40 @@ const borderLeft = document.querySelector('.border-left');
 class Roadline {
     constructor(root, x){
         this.root = root;
-        
         this.x = x * 70;
-        this.y = 50;
-
+        this.y = -110;
         this.destroyed = false;
-        
-        this.speed = 1.75;
+        this.speed = 2;
 
         this.domElement = document.createElement('div');
         this.domElement.className = 'line';
         this.domElement.style.left = `${this.x}px`;
         this.domElement.style.top = `${this.y}px`;
-        
         this.root.appendChild(this.domElement);
     }
+    
     update(timeDiff) {
-
         this.y = this.y + timeDiff * this.speed;
         this.domElement.style.top = `${this.y}px`;
 
         if (this.y > GAME_HEIGHT) {
-            this.root.removeChild(this.domElement);
             this.destroyed = true;
+            this.root.removeChild(this.domElement);
         }
     }
 }
 
-let lineArray = [];
+// let lineArray = [];
+let loop = undefined;
 
 deployLines = () => {
-    let loop = setInterval(loopFunc = () => {
+    loop = setInterval(loopFunc = () => {
         for (let i=1 ; i < 10 ; i++){
         lineArray.push(new Roadline(zone, i));
-    }
-    // lineArray.forEach(line => {
-    //     line.update(2); 
-    // });
-    // lineArray = lineArray.filter(line => {
-    //     return !line.destroyed; 
-    // });
-    }, 1000);
+        }
+        
+    }, 400);
 }
+
 
 

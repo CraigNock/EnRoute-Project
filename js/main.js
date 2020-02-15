@@ -30,7 +30,8 @@ startTheGame = () => {
     gameEngine = new Engine(zone);
     // We call the gameLoop method to start the game
     gameEngine.gameLoop();
-    // deployLines(); //////issue
+    //Active road line generator
+    deployLines(); 
 }
 
 //KEY HANDLER

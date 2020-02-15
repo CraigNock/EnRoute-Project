@@ -10,8 +10,6 @@
 // }
 
 
-
-
 class Player {
     // The constructor takes one parameter. This parameter refers to the parent DOM node.
     // We will be adding a DOM element to this parent DOM node.
@@ -21,7 +19,7 @@ class Player {
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
         this.lives = 3;
         this.domElement = document.createElement("img");
-        this.domElement.src = 'images/car.png';
+        this.domElement.src = 'images/player.png';
         this.domElement.style.position = 'absolute';
         this.domElement.style.height = PLAYER_HEIGHT;
         this.domElement.style.width = PLAYER_WIDTH;
@@ -45,3 +43,10 @@ class Player {
         this.domElement.style.left = `${this.x}px`;
     }
 }
+
+//Animate car
+let copLight = ['images/lights/1', 'images/lights/2', 'images/lights/3' ];
+
+let flash = undefined;
+
+
