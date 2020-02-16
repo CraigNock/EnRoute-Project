@@ -45,7 +45,7 @@ const keydownHandler = event => {
         gameEngine.player.moveRight();
     }
     //music toggle
-    if (event.code === "KeyM") {
+    if (event.code === "KeyE") {
         if(music.paused) {
         music.play();
         } else {

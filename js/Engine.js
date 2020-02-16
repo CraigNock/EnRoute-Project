@@ -52,6 +52,7 @@ class Engine {
                 console.log('dead');
                 clearInterval(loop);
                 deaders = true;
+                new Audio('sounds/crash2.mp3').play();
                 result.style.display = 'flex';
                 resButton.addEventListener('click', restartHandle);
                 return;

@@ -17,7 +17,7 @@ const nextEnemySpot = enemies => {
 const music = document.createElement('AUDIO');
 music.controls = true;
 music.volume = 0.5;
-music.src = 'sounds/gasgasgas.mp3';
+music.src = 'sounds/gasgasgascut.mp3';
 document.querySelector('.border-left').appendChild(music);
 
 
