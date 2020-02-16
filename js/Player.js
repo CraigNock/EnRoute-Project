@@ -15,7 +15,7 @@ class Player {
     // We will be adding a DOM element to this parent DOM node.
     constructor(root) {
         // super(root);
-        this.x = 2 * PLAYER_WIDTH;
+        this.x = 4 * PLAYER_WIDTH;
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
         this.lives = 3;
         this.domElement = document.createElement("img");
@@ -47,6 +47,8 @@ class Player {
 //Animate car
 let copLight = ['images/lights/1', 'images/lights/2', 'images/lights/3' ];
 
-let flash = undefined;
+// let flash = setInterval(()=>{
+
+// },500)
 
 

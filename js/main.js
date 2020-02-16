@@ -27,24 +27,25 @@ startTheGame = () => {
     timePasser();
     //removes dead condition
     deaders = false;
+    deployLines(); 
     gameEngine = new Engine(zone);
     // We call the gameLoop method to start the game
     gameEngine.gameLoop();
     //Active road line generator
-    deployLines(); 
 }
 
 //KEY HANDLER
 const keydownHandler = event => {
+    if (event.repeat) { return }
     if (deaders || paused){
     }
-    else if (event.code === "ArrowLeft") {
+    else if (event.code === "KeyA") {
         gameEngine.player.moveLeft();
     }
-    else if (event.code === "ArrowRight") {
+    else if (event.code === "KeyD") {
         gameEngine.player.moveRight();
     }
-    //music toggle
+    //MUSIC TOGGLE  **maybe replace the following with switch function**
     if (event.code === "KeyE") {
         if(music.paused) {
         music.play();
@@ -52,10 +53,10 @@ const keydownHandler = event => {
             music.pause();
         }
     } 
-    if (event.code === "KeyP") {
+    //PAUSE
+    if (event.code === "KeyQ") {
         if (deaders){
-
-        } else if(paused === true) {
+        } else if (paused === true) {
             timePasser();
             console.log(paused);
             paused = false;
@@ -69,7 +70,36 @@ const keydownHandler = event => {
         }
         
     }
+    //RESTART
+    if (event.code === "KeyR") {
+        if(deaders){
+            restartHandle();
+        }
+    }
+    //SPEED UP
+    if (event.code === "KeyW") {
+        // if (!deaders && !paused){
+            timePasser();
+            deployLines();
+            console.log('faster');
+        // }
+    }
+}
+
+//SLOW DOWN
+speedHandler = (e) => {
+    if (event.repeat) { return };
+    if (event.code === "KeyW") {
+        clearInterval(clock);
+        clearInterval(loop);
+        console.log('slower');
+    }
 }
 
 document.addEventListener("keydown", keydownHandler);
+document.addEventListener("keyup", speedHandler);
 startTheGame();
+
+
+
+

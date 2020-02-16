@@ -51,6 +51,7 @@ class Engine {
             } else {
                 console.log('dead');
                 clearInterval(loop);
+                
                 deaders = true;
                 new Audio('sounds/crash2.mp3').play();
                 result.style.display = 'flex';
@@ -70,7 +71,9 @@ class Engine {
                 // if(this.player.lives === 0) {
                     // console.log('ded');
                     // console.log(this.player.lives);
-                    dead = true;
+
+                    dead = true; //***comment out this to make invincible***
+                    
                 // } else {
                     // console.log('sub');
                     // this.player.lives --;

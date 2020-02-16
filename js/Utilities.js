@@ -15,7 +15,7 @@ const nextEnemySpot = enemies => {
 
 //MUSIC ADDITION
 const music = document.createElement('AUDIO');
-music.controls = true;
+// music.controls = true;
 music.volume = 0.5;
 music.src = 'sounds/gasgasgascut.mp3';
 document.querySelector('.border-left').appendChild(music);
@@ -24,7 +24,7 @@ document.querySelector('.border-left').appendChild(music);
 //TIME INCREMENTER
 timePasser = () =>{
     console.log('time activated');
-    clock = setInterval( passer = () => {
+    clock = setInterval( () => {
     timeElapsed ++;}
     , 1)
 };
@@ -39,7 +39,7 @@ body.appendChild(result);
 const resButton = document.createElement('button');
 resButton.id = 'resButton';
 resButton.className = 'res-button';
-resButton.innerText = 'Restart';
+resButton.innerText = '[R] Restart';
 document.querySelector('#result').appendChild(resButton);
 
 restartHandle = (e) => {
