@@ -20,7 +20,7 @@ class Roadline {
         this.domElement.style.top = `${this.y}px`;
         this.root.appendChild(this.domElement);
     }
-    
+
     update(timeDiff) {
         this.y = this.y + timeDiff * this.speed;
         this.domElement.style.top = `${this.y}px`;
@@ -36,7 +36,7 @@ class Roadline {
 let loop = undefined;
 
 deployLines = () => {
-    loop = setInterval(loopFunc = () => {
+    loop = setInterval( () => {
         for (let i=1 ; i < 10 ; i++){
         lineArray.push(new Roadline(zone, i));
         }

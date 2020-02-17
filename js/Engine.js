@@ -36,9 +36,8 @@ class Engine {
         this.enemies = this.enemies.filter(enemy => {
             return !enemy.destroyed; 
         });
+
         while (this.enemies.length < MAX_ENEMIES) {
-            // We find the next available spot and, using this spot, we create an enemy.
-            // We add this enemy to the enemies array 
             const spot = nextEnemySpot(this.enemies);
             this.enemies.push(new Enemy(this.root, spot));
         }
@@ -50,16 +49,13 @@ class Engine {
                 // console.log(this.player.lives);
             } else {
                 console.log('dead');
-                clearInterval(loop);
-                
-                deaders = true;
+                clearTimeout(winCond);
+                switchText('Game Over');
                 new Audio('sounds/crash2.mp3').play();
-                result.style.display = 'flex';
-                resButton.addEventListener('click', restartHandle);
+                endClear();
                 return;
             }
         }
-
         setTimeout(this.gameLoop, 20);
     }
 

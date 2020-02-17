@@ -25,25 +25,51 @@ document.querySelector('.border-left').appendChild(music);
 timePasser = () =>{
     console.log('time activated');
     clock = setInterval( () => {
-    timeElapsed ++;}
-    , 1)
+        console.log('tick');
+        timeElapsed ++;
+    }, 1)
 };
 
-//RESTART BUTTON & HANDLER
-const result = document.createElement('div');
-result.id = 'result';
-result.className = 'result-box';
-result.innerText = 'Game Over';
-body.appendChild(result);
-
-const resButton = document.createElement('button');
-resButton.id = 'resButton';
-resButton.className = 'res-button';
-resButton.innerText = '[R] Restart';
-document.querySelector('#result').appendChild(resButton);
 
 restartHandle = (e) => {
     resButton.removeEventListener('click', restartHandle);
     result.style.display = 'none';
+    // clearInterval(clock); //no affect
     startTheGame();
+}
+
+
+//TIMER
+winTimer = () => {
+    timeLeft.innerText = timeGiven;
+    progress.innerText = progressCount;
+    countdown = setInterval(() => {
+    timeLeft.innerText =  `${timeLeft.innerText -1}`;
+    progress.innerText =  `${progressCount}`;
+    timeGiven --;
+    progressCount++;
+    }, 1000);
+
+    winCond = setTimeout( ()=> {
+        switchText('WINNER!');
+        endClear();
+    } , timeGiven*1000)
+}
+
+endClear = () => {
+    clearInterval(clock);
+    clearInterval(loop);
+    clearInterval(countdown);
+    keydead = true;
+    paused = true;
+    
+    result.style.display = 'flex';
+    resButton.addEventListener('click', restartHandle);
+}
+
+
+switchText = (text) => {
+    document.getElementById('result').removeChild(resButton);
+    result.innerText = `${text}`;
+    document.getElementById('result').appendChild(resButton);
 }

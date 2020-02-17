@@ -22,22 +22,26 @@ startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
     //resets timer
-    clearInterval(clock);
     timeElapsed = 0;
+    timeGiven = 11;
+    progressCount = 0;
+    winTimer();
     timePasser();
     //removes dead condition
-    deaders = false;
-    deployLines(); 
-    gameEngine = new Engine(zone);
-    // We call the gameLoop method to start the game
-    gameEngine.gameLoop();
+    keydead = false;
+    paused = false;
     //Active road line generator
+    deployLines(); 
+    //create game
+    gameEngine = new Engine(zone);
+    // start the game
+    gameEngine.gameLoop();
 }
 
-//KEY HANDLER
+//KEY HANDLER  **replace all this with SWITCH function**
 const keydownHandler = event => {
     if (event.repeat) { return }
-    if (deaders || paused){
+    if (keydead || paused){
     }
     else if (event.code === "KeyA") {
         gameEngine.player.moveLeft();
@@ -45,26 +49,26 @@ const keydownHandler = event => {
     else if (event.code === "KeyD") {
         gameEngine.player.moveRight();
     }
-    //MUSIC TOGGLE  **maybe replace the following with switch function**
+    //MUSIC TOGGLE  
     if (event.code === "KeyE") {
         if(music.paused) {
-        music.play();
+            music.play();
         } else {
             music.pause();
         }
     } 
     //PAUSE
     if (event.code === "KeyQ") {
-        if (deaders){
-        } else if (paused === true) {
+        if (!keydead && paused ) {
             timePasser();
-            console.log(paused);
+            winTimer();
             paused = false;
-            console.log(paused);
             gameEngine.gameLoop();
             console.log('unpause');
         } else {
             clearInterval(clock);
+            clearInterval(countdown);
+            clearTimeout(winCond);
             paused = true;
             console.log('pause');
         }
@@ -72,25 +76,26 @@ const keydownHandler = event => {
     }
     //RESTART
     if (event.code === "KeyR") {
-        if(deaders){
+        if(keydead){
             restartHandle();
         }
     }
-    //SPEED UP
+    //BOOST SPEED UP
     if (event.code === "KeyW") {
-        // if (!deaders && !paused){
-            timePasser();
-            deployLines();
+        // if (!keydead && !paused){
+            timePasser(); //creates extra interval 'clock'
+            deployLines(); //creates extra interval 'loop'
             console.log('faster');
         // }
     }
 }
 
-//SLOW DOWN
+//BOOST SLOW DOWN
 speedHandler = (e) => {
     if (event.repeat) { return };
     if (event.code === "KeyW") {
         clearInterval(clock);
+        
         clearInterval(loop);
         console.log('slower');
     }
