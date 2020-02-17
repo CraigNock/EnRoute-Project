@@ -36,11 +36,20 @@ timePasser = () =>{
     }, 1)
 };
 
+//BOOST
+timeBooster = () =>{
+    console.log('time boosted');
+    boost = setInterval( () => {
+        console.log('tick');
+        timeElapsed ++;
+        // progressCount ++;
+    }, 1)
+};
+
 
 restartHandle = (e) => {
     resButton.removeEventListener('click', restartHandle);
     result.style.display = 'none';
-    // clearInterval(clock); //no affect
     startTheGame();
 }
 
@@ -53,7 +62,7 @@ winTimer = () => {
     timeLeft.innerText =  `${timeLeft.innerText -1}`;
     progress.innerText =  `${progressCount}`;
     timeGiven --;
-    progressCount++;
+    progressCount++;///make related to clock
     }, 1000);
 
     //replace with check for progress 100% when boost is fixed.

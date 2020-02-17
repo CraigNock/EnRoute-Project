@@ -87,7 +87,7 @@ const keydownHandler = event => {
     //BOOST SPEED UP
     if (event.code === "KeyW") {
         // if (!keydead && !paused){
-            timePasser(); //creates extra interval 'clock'
+            timeBooster(); //creates extra interval 'clock'
             deployLines(); //creates extra interval 'loop'
             console.log('faster');
         // }
@@ -98,7 +98,7 @@ const keydownHandler = event => {
 speedHandler = (e) => {
     if (event.repeat) { return };
     if (event.code === "KeyW") {
-        clearInterval(clock);
+        clearInterval(boost);
         
         clearInterval(loop);
         console.log('slower');

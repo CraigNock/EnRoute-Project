@@ -45,10 +45,12 @@ deployLines = () => {
     }, 400);
 }
 
+//varible to trigger deploy, manipulate extra with boost
+
 
 class Tree extends Roadline {
     constructor(root,x){
-        super();
+        super(root,x);
 }}
 makeTrees = () => {
     trees = setInterval( () => {
