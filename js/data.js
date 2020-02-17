@@ -19,12 +19,15 @@ let paused = false;
 let timeElapsed = 0;
 let clock = undefined;
 
+//BODY BUILDING
 const body = document.querySelector('body')
 body.style.display = 'flex';
 body.style.justifyContent = 'center';
 body.style.aligntItems = 'center';
 body.style.margin = '0';
 body.style.backgroundColor = 'black';
+
+const borderLeft = document.querySelector('.border-left');
 
 //related to win timer
 let countdown = undefined;

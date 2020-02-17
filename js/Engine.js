@@ -3,17 +3,20 @@
 // enemy and also relating to how our enemies are created and evolve over time
 
 let lineArray = undefined;
+let treeArray = undefined;
+
 
 class Engine {
     constructor(theRoot) {
         this.root = theRoot;
         // Create Player.
         this.player = new Player(this.root);
+        
         // Create Enemy Tracker
         this.enemies = [];
 
         lineArray = [];
-        
+        // treeArray = [];
     }
 
     gameLoop = () => {
@@ -29,7 +32,14 @@ class Engine {
         lineArray = lineArray.filter(line => {
             return !line.destroyed; 
         });
-
+//
+        // treeArray.forEach(tree => {
+        //     tree.update(timeDiff); 
+        // });
+        // treeArray = lineArray.filter(tree => {
+        //     return !tree.destroyed; 
+        // });
+//
         this.enemies.forEach(enemy => {
             enemy.update(timeDiff); 
         });

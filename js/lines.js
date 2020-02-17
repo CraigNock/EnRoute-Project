@@ -1,6 +1,5 @@
 
-const borderLeft = document.querySelector('.border-left');
-
+// const borderLeft = document.querySelector('.border-left');
 
 // let scoreboard = new Text(borderLeft, '50px', '0px');
 // scoreboard.domElement.innerText = 'SCORE';
@@ -30,10 +29,12 @@ class Roadline {
             this.root.removeChild(this.domElement);
         }
     }
+    
 }
 
-// let lineArray = [];
+
 let loop = undefined;
+let trees = undefined;
 
 deployLines = () => {
     loop = setInterval( () => {
@@ -45,4 +46,13 @@ deployLines = () => {
 }
 
 
-
+class Tree extends Roadline {
+    constructor(root,x){
+        super();
+}}
+makeTrees = () => {
+    trees = setInterval( () => {
+        treeArray.push(new Tree(borderLeft, 1));
+        }
+    , 400)
+};

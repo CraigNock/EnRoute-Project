@@ -21,10 +21,11 @@ app.appendChild(zone);
 startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
-    //resets timer
+    //resets timers
     timeElapsed = 0;
-    timeGiven = 11;
+    timeGiven = 60; //always less than 100 to force use of boost
     progressCount = 0;
+    //start timers
     winTimer();
     timePasser();
     //removes dead condition
@@ -32,15 +33,18 @@ startTheGame = () => {
     paused = false;
     //Active road line generator
     deployLines(); 
+    // makeTrees(); ///FIX
     //create game
     gameEngine = new Engine(zone);
     // start the game
     gameEngine.gameLoop();
+    
 }
 
-//KEY HANDLER  **replace all this with SWITCH function**
+//KEY HANDLER  **note to self: replace all this with SWITCH function**
 const keydownHandler = event => {
     if (event.repeat) { return }
+    //STEERING
     if (keydead || paused){
     }
     else if (event.code === "KeyA") {
@@ -103,6 +107,8 @@ speedHandler = (e) => {
 
 document.addEventListener("keydown", keydownHandler);
 document.addEventListener("keyup", speedHandler);
+
+//stretch :implement start screen and maybe intro gif or something.
 startTheGame();
 
 

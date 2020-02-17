@@ -13,6 +13,12 @@ const nextEnemySpot = enemies => {
     return candidate;
 }
 
+//Random Generator (used for cars)
+function randy(min, max){ 
+    let rand = Math.floor((Math.random()*(max - min)) + min);
+    return rand;
+};
+
 //MUSIC ADDITION
 const music = document.createElement('AUDIO');
 // music.controls = true;
@@ -50,6 +56,8 @@ winTimer = () => {
     progressCount++;
     }, 1000);
 
+    //replace with check for progress 100% when boost is fixed.
+    //also make a better reward
     winCond = setTimeout( ()=> {
         switchText('WINNER!');
         endClear();
@@ -62,7 +70,6 @@ endClear = () => {
     clearInterval(countdown);
     keydead = true;
     paused = true;
-    
     result.style.display = 'flex';
     resButton.addEventListener('click', restartHandle);
 }

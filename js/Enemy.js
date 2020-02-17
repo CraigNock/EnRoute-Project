@@ -1,10 +1,5 @@
 
-function randy(min, max){ 
-            let rand = Math.floor((Math.random()*(max - min)) + min);
-            return rand;
-        };
-
-// enemy position on screen. It will also provide methods for updating and destroying the enemy.
+// enemy position on screen, also methods for updating and destroying
 class Enemy {
     constructor(theRoot, enemySpot) {
         
