@@ -21,10 +21,10 @@ app.appendChild(zone);
 startTheGame = () => {
     //Clears the old game
     zone.innerHTML = '';
-    //resets timers
+    //resets timers/counters
     timeElapsed = 0;
     timeGiven = 80; //always less than 100 to force use of boost
-    progressCount = 0;
+    progressCount = 0; //increase this to see win easily
     //start timers
     winTimer();
     timePasser();

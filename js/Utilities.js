@@ -62,28 +62,24 @@ restartHandle = (e) => {
     startTheGame();
 }
 
-
 //TIMER
 winTimer = () => {
-    if(progressCount >= 100) {
-        switchText('WINNER!');
-        endClear();
-    }
     timeLeft.innerText = timeGiven;
     progress.innerText = progressCount;
+
     countdown = setInterval(() => {
     timeLeft.innerText =  `${timeLeft.innerText -1}`;
     progress.innerText =  `${progressCount}`;
     timeGiven --;
     progressCount++;
-    }, 1000);
 
-    //replace with check for progress 100% when boost is fixed.
-    //also make a better reward
-    // winCond = setTimeout( ()=> {
-    //     switchText('WINNER!');
-    //     endClear();
-    // } , timeGiven*1000)
+    if(progressCount >= 101) {
+        switchText('WINNER!');
+        endClear();
+        console.log('win');
+    };
+
+    }, 1000);
 }
 
 endClear = () => {
