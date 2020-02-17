@@ -23,7 +23,7 @@ startTheGame = () => {
     zone.innerHTML = '';
     //resets timers
     timeElapsed = 0;
-    timeGiven = 60; //always less than 100 to force use of boost
+    timeGiven = 80; //always less than 100 to force use of boost
     progressCount = 0;
     //start timers
     winTimer();
@@ -88,6 +88,7 @@ const keydownHandler = event => {
     if (event.code === "KeyW") {
         // if (!keydead && !paused){
             timeBooster(); //creates extra interval 'clock'
+            progBoost(); //creates extra progress interval 'progressBoost
             deployLines(); //creates extra interval 'loop'
             console.log('faster');
         // }
@@ -99,7 +100,7 @@ speedHandler = (e) => {
     if (event.repeat) { return };
     if (event.code === "KeyW") {
         clearInterval(boost);
-        
+        clearInterval(progressBoost);
         clearInterval(loop);
         console.log('slower');
     }

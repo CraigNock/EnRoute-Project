@@ -19,6 +19,9 @@ let paused = false;
 let timeElapsed = 0;
 let clock = undefined;
 
+let boost = undefined;
+let progressBoost = undefined;
+
 //BODY BUILDING
 const body = document.querySelector('body')
 body.style.display = 'flex';

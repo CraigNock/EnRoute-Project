@@ -31,8 +31,10 @@ document.querySelector('.border-left').appendChild(music);
 timePasser = () =>{
     console.log('time activated');
     clock = setInterval( () => {
-        console.log('tick');
+        // console.log('tick');
         timeElapsed ++;
+        //progress
+        
     }, 1)
 };
 
@@ -40,11 +42,18 @@ timePasser = () =>{
 timeBooster = () =>{
     console.log('time boosted');
     boost = setInterval( () => {
-        console.log('tick');
+        // console.log('tick');
         timeElapsed ++;
-        // progressCount ++;
     }, 1)
 };
+
+
+progBoost = () => {
+    progressBoost = setInterval( () =>{
+        progressCount++;
+    }, 500);
+};
+
 
 
 restartHandle = (e) => {
@@ -56,21 +65,25 @@ restartHandle = (e) => {
 
 //TIMER
 winTimer = () => {
+    if(progressCount >= 100) {
+        switchText('WINNER!');
+        endClear();
+    }
     timeLeft.innerText = timeGiven;
     progress.innerText = progressCount;
     countdown = setInterval(() => {
     timeLeft.innerText =  `${timeLeft.innerText -1}`;
     progress.innerText =  `${progressCount}`;
     timeGiven --;
-    progressCount++;///make related to clock
+    progressCount++;
     }, 1000);
 
     //replace with check for progress 100% when boost is fixed.
     //also make a better reward
-    winCond = setTimeout( ()=> {
-        switchText('WINNER!');
-        endClear();
-    } , timeGiven*1000)
+    // winCond = setTimeout( ()=> {
+    //     switchText('WINNER!');
+    //     endClear();
+    // } , timeGiven*1000)
 }
 
 endClear = () => {
