@@ -66,6 +66,7 @@ const keydownHandler = event => {
         if (!keydead && paused ) {
             timePasser();
             winTimer();
+            deployLines();
             paused = false;
             gameEngine.gameLoop();
             console.log('unpause');
@@ -73,6 +74,7 @@ const keydownHandler = event => {
             clearInterval(clock);
             clearInterval(countdown);
             clearTimeout(winCond);
+            clearInterval(loop);
             paused = true;
             console.log('pause');
         }

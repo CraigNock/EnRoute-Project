@@ -1,85 +1,86 @@
 # Object Oriented Programming Game Project
 
-<p align="center"><img src="./images/screenshot.png"></p>
+<p align="center"><img src="./images/screenshots/screen1.png"></p>
+<p align="center"><img src="./images/screenshots/screen2.png"></p>
+<p align="center"><img src="./images/screenshots/screen3.png"></p>
 
-## Introduction
+### **EnRoute!**
 
-This project was designed as a way for you to practice and learn about Object Oriented Programming. A good bit of code has already been provided for you, and it makes for an _almost_ working game.
+The games basic premise is that the player controls a police car, racing against both the clock and traffic, to reach the destination and/or emergency.
 
-The project is divided in two parts. In a first part, you will fix and implement some basic functionality. In the second part, you will be able to customize the game as you wish!
+### Features:
 
-Because there is a fair bit of JavaScript in this app, we have split code into more manageable pieces. You wil find all of the code in the `js` folder.
+- Using A and D to move the car Left and Right respectively, navigate around other cars. Crashing into one will end your game. 
 
-_Because we split the code into many files, we need to import each file, in the right order in the `index.html` file.
+- A boost function is activated via holding the W key, it will double your speed and Progress gains.
+Progress increases by 1% per second, however there are less than 100 seconds on the clock! 
+You must use your Boost wisely to gain more progress at the increased risk of crashing.
 
-## The game
+- Attached to the game is an appropriate eurobeat soundtrack. 
+This can be toggled on or off via the E key. Default is off and volume is set at a comfortable 50% to avoid speaker blasting.
+Also note the crash is accompanied by a custom non-tiresquealing/irritating noise. The police lights flash too. This was merely enabled by creating a gif in a separate program.
+Player car is deliberately slightly shorter than other cars, to make play less punishing and be more distinct.
+- Non-player car visual appearance is selected randomly from 16 available models.
 
-This game is called **I CAN HAZ CHEEZBURGER?!??**. In the game, you play as an anthropomorphic cheeseburger. The only thing you can do is move left or right with the arrows of your keyboard.
+- On the borders of the game are grass and water. The grass containing the game information, the water just being prettyish(made somewhat opaque to achieve better game palette matching).
+Both are responsive to window resizing, allowing game to be played on somewhat smaller window size. 
 
-The goal of the game is to stay alive as long as possible by avoiding the Nyan Cats who are raining from the sky and trying to _haz_ you. The longer you stay alive, the higher your score!
+- On Crash or Win the game can be restarted easily using the R key. Optional button is also provided.
+Also the game can be paused at any time with the Q key.
+The intention was to keep all controls conveniently close together for one hand.
 
-At the moment, the game is a bit broken. This project will have you first fix the broken game, then add your own features to it. :)
 
-## Instructions
+### Some brief Hows:
 
-1. Open the `index.html` file in your browser, and observe what goes on when you load it.
-2. After reading the instructions of the project, **take a look at the provided code**. Don't worry if you don't understand _everything_, but try to get a general feel for what the code is doing. There are _extensive_ comments throughout the code.
-3. Once the provided code has been consulted,go through the Assignment section at your own pace.
+- The forward movement illusion is made by the constantly 'falling' road lines.
+These are set to fall at a consistent rate using the game clock. Line creation however is controlled by it's own interval.
 
-## Assignment
+- Pausing was achieved by replacing the game clock with an in-game function, thereby allowing for game freezing and manipulation for other elements.
 
-### 1. Let's make the game actually end
+- Boost was created by adding and removing extra intervals relating to game timing and progress. Reverse engineered from problems encountered when constructing the pause ability.
 
-If a Nyan Cat gets to you and eats you, the game keeps going on. Let's fix this!
+- Win condition merely track progress related variable.
 
-First, look at the `gameLoop` method of the `Engine`. There's a part of the function that calls `this.isPlayerDead()` to verify if the player has died based on the current situation.
+- Any restart clears all intervals and global variables.
 
-Next, look at the `isPlayerDead` method of the `Engine`. Notice that it's always returning `false`, which means that the player is always reported to be alive.
+### Troubles:
 
-Here, we are going to rewrite the code of this function to actually check if the player should be dead. We will do this by looping over all the enemies, and checking if their box overlaps the player box.
+- Playing with intervals and timing was difficult. If you duplicate an interval, the variable it was assigned to is reassigned to the duplicate, thus becomes unable to be cleared. Took a bit to track this down as a problem was expressed only under certain conditions.
 
-If at least one enemy overlaps the player, then your function should return `true`. Otherwise it should return `false.
+- Early on made attempts to implement lives. Had difficulty as collision mechanics registered multiple 'deads' in a fraction of a second. Decided not a priority after attempting other game mechanics. Would take time to implement if game had more added complexity.
 
-A good strategy would be to console.log both this.player and this.enemies. When you look in the console, you will see that those two objects contain the information necessary to detect a collision.
+- Had difficulty attempting to animate police car lights using multiple images in an array, not much luck searching methods online, wasn't a priority, but would like to solve.
 
-As a hint, note that the box of each enemy is defined by its `x` and `y` coordinates and the `ENEMY_WIDTH` and `ENEMY_HEIGHT` constants. There are similar variables for the player.
+- Discovered that replacing innerText in a div also removes its appended children.
 
-### 2. Let's do some refactoring!
+- Key controls were an issue, before implementing a toggle and disabling repeating.
 
-Look at the `Player` and `Enemy` classes and notice that their `render` methods are identical. This violates our sacred DRY principle. Let's fix it!
 
-While there are many ways to fix it, here we will do it by creating a superclass called `Entity`. This superclass will not need a constructor, and will only have the `render` method.
+### With more time!:
 
-Then, we'll make `Player` and `Enemy` extend the `Entity` class, and remove the `render` methods from both classes.
+- Clean up code. There are obvious and less obvious areas where code could be condensed or combined to be less messy.
 
-Having done this manipulation will break our constructors. Make sure to fix it by calling the appropriate function from your constructors.
+- Trees. Really would like to add some subtle trees(possibly randomised) scrolling down on the grass area to further sell the movement illusion. Implement by extending Roadline class, syncing timing.
 
-### 3. Flavor it!
+- Would like to get roadline generation synced to game timing better, is currently standalone.
+Shows when pausing at specific moments and when boosting. Not game breaking though.
 
----
+- Would very much like to add a better winning reward. Intended to stop flow of cars then after a few seconds fade out game area to a small video or gif of police action (possibly randomised from a selection that also includes some comedic anticlimaxes). 
 
-### The sky is not the limit!!
+- Also adding a start screen and start button. Additionally a small intro video or gif (skippable). Neither returns on restart, only on page refresh.
 
-Having completed the basic section of this project is already great! However, this should leave you plenty of time for the fun part: customizing and evolving the game. Since this is an open-ended activity, we will give you some suggestions. Feel free to use them or not.
+- Would like to have player car display as crashed/crumpled/on fire when crashed. Lights continue to blink regardless.
 
-- Instead of completely stopping the game when it's over, allow the player to start a new game
-- Add a sound track and sound effects to the game
-- Add the possibility of having lives
-- Increase the difficulty level of the game as time passes by making the enemies go faster
-- Allow the enemies and player to have animated sprites instead of the current static ones. You could do this by defining a sprite as an array of images and setting a speed at which these images should switch. This could be implemented in the `render` method.
-- Allow the player to shoot bullets at the Nyan Cats
-- Add another type of entity called `Bonus` that will also fall from the sky and add points to the score
-- Make the game more hardcore by allowing the player to also move up/down and making Nyan Cats also shoot from the left of the screen
-- **Don't stop!** These suggestions are only here to get you started :)
+- Vertical movement: Not hard to implement, not sure if will add much to gameplay enjoyment.
 
-## Project Success guidelines
+- More audio tracks and ability to skip, increase volume etc by keys.
 
-In order for the project to be deemed _successful_ and for you to receive a passing grade
+- More subtle sound effects: randomly provided cars honking(quietly) or drivers exclamations.
 
-- you need to complete steps 1 and 2 completely.
-- add at least 4 _improvements_ to the game.
+- Levels: Would need more dynamic things occurring in game. Extra hazards and powerups.
+Possibly linking boost ability to rely on fuel pickups.
+One hazard would like to add is a fish coming out of the water to either land on a lane and move down or be a horizontally moving hazard.
+Also a power up the would let you deploy a jump to go over cars. Scaling player car would have desired visual effect.
 
-### Submission
 
-- Be sure to add a screenshot to the PR.
-- Provide a link to the game in your project portfolio on surge.sh (If you need help setting this up, see someone).
+Hope you enjoy!
