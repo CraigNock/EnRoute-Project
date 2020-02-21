@@ -1,14 +1,39 @@
 <html>
 <head>    
-    <title>Nyan Kat</title> 
+    <title>EnRoute</title> 
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
 </head> 
 <body>    
+    <div id="border" class="border-left">
+        <p>
+            Time: <span id="timeleft">6</span>
+        </p>
+        <p>
+            Progress: <br>
+            <span id="progress"></span>%
+        </p>
+        <p>
+            <span>W</span> : Boost<br>
+            <span>A</span> : Left<br>
+            <span>D</span> : Right<br>
+            <span>Q</span> : Pause<br>
+            <span>E</span> : Eurobeats
+        </p>
+    </div>
     <div id="app"></div> 
+    <div id='border' class="border-right">
+
+    </div>
+
     <script src="js/data.js"></script> 
     <script src="js/Enemy.js"></script> 
-    <script src="js/engine-utilities.js"></script> 
+    <script src="js/Utilities.js"></script> 
     <script src="js/Engine.js"></script> 
     <script src="js/Player.js"></script> 
+    <script src="js/lines.js"></script> 
     <script src="js/main.js"></script> 
+    <script src="js/text.js"></script> 
 </body> 
 </html> 
