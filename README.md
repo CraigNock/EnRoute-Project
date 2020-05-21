@@ -1,13 +1,17 @@
 # Object Oriented Programming Game Project
+First JavaScript project completed as part of Concordia Bootcamps course. Built in entirely vanilla JS 
+## **EnRoute!**
+Inspired by early flash games Enroute! was created to be relatively simple, but engaging and slightly addictive!
+The games basic premise is that the player controls a police car, racing against both the clock and traffic, to reach the destination and/or emergency.
 
+---
+## Screenshots
 <p align="center"><img src="./images/screenshots/screen1.png"></p>
 <p align="center"><img src="./images/screenshots/screen2.png"></p>
 <p align="center"><img src="./images/screenshots/screen3.png"></p>
 
-### **EnRoute!**
 
-The games basic premise is that the player controls a police car, racing against both the clock and traffic, to reach the destination and/or emergency.
-
+---
 ### Features:
 
 - Using A and D to move the car Left and Right respectively, navigate around other cars. Crashing into one will end your game. 
@@ -29,7 +33,7 @@ Both are responsive to window resizing, allowing game to be played on somewhat s
 Also the game can be paused at any time with the Q key.
 The intention was to keep all controls conveniently close together for one hand.
 
-
+---
 ### Some brief Hows:
 
 - The forward movement illusion is made by the constantly 'falling' road lines.
