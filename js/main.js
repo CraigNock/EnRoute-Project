@@ -86,24 +86,24 @@ const keydownHandler = event => {
             restartHandle();
         }
     }
-    //BOOST SPEED UP
+    //BOOST: SPEED UP
     if (event.code === "KeyW") {
         // if (!keydead && !paused){
             timeBooster(); //creates extra interval 'clock'
             progBoost(); //creates extra progress interval 'progressBoost
-            deployLines(); //creates extra interval 'loop'
+            deployBoostLines(); //creates extra interval 'loop'
             console.log('faster');
         // }
     }
 }
 
-//BOOST SLOW DOWN
+//BOOST: SLOW DOWN
 speedHandler = (e) => {
     if (event.repeat) { return };
     if (event.code === "KeyW") {
         clearInterval(boost);
         clearInterval(progressBoost);
-        clearInterval(loop);
+        clearInterval(boostLoop);
         console.log('slower');
     }
 }

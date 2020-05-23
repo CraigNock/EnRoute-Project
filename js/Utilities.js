@@ -57,6 +57,7 @@ progBoost = () => {
 
 
 restartHandle = (e) => {
+
     resButton.removeEventListener('click', restartHandle);
     result.style.display = 'none';
     startTheGame();
@@ -86,6 +87,7 @@ endClear = () => {
     clearInterval(clock);
     clearInterval(loop);
     clearInterval(countdown);
+        
     keydead = true;
     paused = true;
     result.style.display = 'flex';

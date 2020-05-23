@@ -34,10 +34,19 @@ class Roadline {
 
 
 let loop = undefined;
+let boostLoop = undefined;
 let trees = undefined;
 
 deployLines = () => {
     loop = setInterval( () => {
+        for (let i=1 ; i < 10 ; i++){
+        lineArray.push(new Roadline(zone, i));
+        }
+        
+    }, 400);
+}
+deployBoostLines = () => {
+    boostLoop = setInterval( () => {
         for (let i=1 ; i < 10 ; i++){
         lineArray.push(new Roadline(zone, i));
         }

@@ -60,6 +60,7 @@ class Engine {
             } else {
                 console.log('dead');
                 clearTimeout(winCond);
+                clearInterval(loop);
                 switchText('Game Over');
                 new Audio('sounds/crash2.mp3').play();
                 endClear();
